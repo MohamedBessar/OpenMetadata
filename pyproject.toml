@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools~=70.3.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "custom-dremio-connector"
+authors = [
+    { name = "TIKI GmbH" }
+]
+version = "0.3.0.dev1"
+license = { file = "LICENSE.txt" }
+description = "Custom OpenMetadata connector to connect data from Dremio to OpenMetadata."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "openmetadata-ingestion>=1.5.1,<1.6",
+    "sqlalchemy-dremio~=3.0.4",
+    "pandas~=2.2.0"
+]
+
+[project.urls]
+Documentation = "https://github.com/TIKI-Institut/openmetadata-dremio-connector/tree/main#readme"
+Source = "https://github.com/TIKI-Institut/openmetadata-dremio-connector"
+Tracker = "https://github.com/TIKI-Institut/openmetadata-dremio-connector/issues"
+
+[tool.setuptools.packages.find]
+where = ["./connector"]
+exclude = ["tests*"]
+namespaces = false
