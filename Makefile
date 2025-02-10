@@ -1,4 +1,6 @@
-OM_INGESTION_IMAGE_VERSION := 1.5.4
+OM_INGESTION_IMAGE_VERSION := 1.6.3
+
+.DEFAULT_GOAL := help
 
 .PHONY: help
 help:  ## shows the Makefile targets with information
@@ -10,5 +12,5 @@ endif
 
 .PHONY: local-openmetadata-stack
 local-openmetadata-stack: export OPENMETADATA_INGESTION_IMAGE_VERSION=$(OM_INGESTION_IMAGE_VERSION)
-local-openmetadata-stack:  ## first shutdowsn any existing and then starts a local openmetadata stack for testing
+local-openmetadata-stack:  ## first shutdown any existing and then starts a local openmetadata stack for testing
 	docker compose -f ./local-openmetadata-stack/docker-compose.yml down -v && docker compose -f ./local-openmetadata-stack/docker-compose.yml up -d

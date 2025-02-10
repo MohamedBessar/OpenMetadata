@@ -86,7 +86,7 @@ class InvalidDremioConnectorException(Exception):
     """
 
 
-class DremioConnector(CommonDbSourceService, MultiDBSource):
+class DremioSource(CommonDbSourceService, MultiDBSource):
     """
     Dremio has following design:
     <Space>.<Folder>(.<Folder+N>).<Relation>
@@ -113,7 +113,7 @@ class DremioConnector(CommonDbSourceService, MultiDBSource):
 
     @classmethod
     def create(cls, config_dict: dict, metadata: OpenMetadata,
-               pipeline_name: Optional[str] = None) -> "DremioConnector":
+               pipeline_name: Optional[str] = None) -> "DremioSource":
         config: WorkflowSource = WorkflowSource.model_validate(config_dict)
         connection: CustomDatabaseConnection = config.serviceConnection.root.config
         if not isinstance(connection, CustomDatabaseConnection):

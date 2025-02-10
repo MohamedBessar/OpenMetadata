@@ -11,9 +11,9 @@ version = "0.3.0.dev1"
 license = { file = "LICENSE.txt" }
 description = "Custom OpenMetadata connector to connect data from Dremio to OpenMetadata."
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = [
-    "openmetadata-ingestion>=1.5.1,<1.6",
+    "openmetadata-ingestion>=1.6.0,<1.7",
     "sqlalchemy-dremio~=3.0.4",
     "pandas~=2.2.0"
 ]
@@ -24,6 +24,6 @@ Source = "https://github.com/TIKI-Institut/openmetadata-dremio-connector"
 Tracker = "https://github.com/TIKI-Institut/openmetadata-dremio-connector/issues"
 
 [tool.setuptools.packages.find]
-where = ["./connector"]
+where = ["./src"]
 exclude = ["tests*"]
-namespaces = false
+namespaces = true

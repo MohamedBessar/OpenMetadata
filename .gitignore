@@ -1,5 +1,7 @@
 workflow.dremio.yaml
 local-openmetadata-stack/docker-volume
+.venv
+venv
 
 # JetBrains IDE
 .idea/
