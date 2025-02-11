@@ -1,9 +1,33 @@
 workflow.dremio.yaml
 local-openmetadata-stack/docker-volume
-.venv
-venv
 
 # JetBrains IDE
 .idea/
 *.iml
 
+##
+## Python
+##
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Environments
+.venv
+venv
