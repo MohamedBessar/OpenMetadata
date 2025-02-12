@@ -4,7 +4,7 @@ source:
   serviceConnection:
     config:
       type: CustomDatabase
-      sourcePythonClass: connector.dremio_connector.DremioConnector
+      sourcePythonClass: metadata.ingestion.source.database.dremio.metadata.DremioSource
       connectionOptions:
         hostPort: <host:port>
         username: <username>
