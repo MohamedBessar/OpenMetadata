@@ -202,12 +202,12 @@ class DremioSource(CommonDbSourceService, MultiDBSource):
         return schema_name
 
     def get_columns_and_constraints(  # pylint: disable=too-many-locals
-            self, schema_name: str, table_name: str, db_name: str, inspector: Inspector
+            self, schema_name: str, table_type: TableType , table_name: str, db_name: str, inspector: Inspector
     ) -> Tuple[
         Optional[List[Column]], Optional[List[TableConstraint]], Optional[List[Dict]]
     ]:
         return super().get_columns_and_constraints(
-            self._add_database_to_schema_name(schema_name), table_name, db_name, inspector)
+            self._add_database_to_schema_name(schema_name), table_name, db_name, inspector, table_type)
 
     def get_schema_definition(
             self, table_type: TableType, table_name: str, schema_name: str, inspector: Inspector
