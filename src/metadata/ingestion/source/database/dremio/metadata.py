@@ -137,7 +137,7 @@ class DremioSource(CommonDbSourceService, MultiDBSource):
     # ### Extend CommonDbSourceService ###
     # ### ################################
     def get_database_names(self) -> Iterable[str]:
-        configured_database = self.get_configured_database()
+        configured_database = self.get_configured_database() # pylint: disable=assignment-from-none
         if configured_database:
             self.set_inspector(database_name=configured_database)
             yield configured_database
@@ -202,7 +202,12 @@ class DremioSource(CommonDbSourceService, MultiDBSource):
         return schema_name
 
     def get_columns_and_constraints(  # pylint: disable=too-many-locals
-            self, schema_name: str, table_type: TableType , table_name: str, db_name: str, inspector: Inspector
+            self,
+            schema_name: str,
+            table_name: str,
+            db_name: str,
+            inspector: Inspector,
+            table_type: TableType = None,
     ) -> Tuple[
         Optional[List[Column]], Optional[List[TableConstraint]], Optional[List[Dict]]
     ]:
@@ -210,7 +215,11 @@ class DremioSource(CommonDbSourceService, MultiDBSource):
             self._add_database_to_schema_name(schema_name), table_name, db_name, inspector, table_type)
 
     def get_schema_definition(
-            self, table_type: TableType, table_name: str, schema_name: str, inspector: Inspector
+            self,
+            table_type: TableType,
+            table_name: str,
+            schema_name: str,
+            inspector: Inspector,
     ) -> Optional[str]:
         return super().get_schema_definition(
             table_type, table_name, self._add_database_to_schema_name(schema_name), inspector)
