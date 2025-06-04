@@ -7,7 +7,7 @@ name = "custom-dremio-connector"
 authors = [
     { name = "TIKI GmbH" }
 ]
-version = "0.4.0.dev1"
+version = "0.4.0"
 license = { file = "LICENSE.txt" }
 description = "Custom OpenMetadata connector to connect data from Dremio to OpenMetadata."
 readme = "README.md"
