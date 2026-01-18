@@ -1,0 +1,35 @@
+source:
+  type: custom
+  serviceName: dremio_test
+  serviceConnection:
+    config:
+      type: CustomDatabase
+      sourcePythonClass: "metadata.ingestion.source.database.dremio.metadata.DremioSource"
+      connectionOptions:
+        hostPort: localhost:32010
+        username: dremio
+        password: dremio123
+        #database: database
+  sourceConfig:
+    config:
+      type: DatabaseMetadata
+      markDeletedStoredProcedures: false
+      includeStoredProcedures: false
+      includeOwners: false
+      includeTags: false
+#      databaseFilterPattern:
+#      schemaFilterPattern:
+#      tableFilterPattern:
+#        includes:
+#          - customer.*
+sink:
+  type: metadata-rest
+  config: {}
+workflowConfig:
+  loggerLevel: DEBUG
+#  loggerLevel: INFO # DEBUG, INFO, WARN or ERROR
+  openMetadataServerConfig:
+    hostPort: http://localhost:8585/api
+    authProvider: openmetadata
+    securityConfig:
+      jwtToken: "eyJraWQiOiJHYjM4OWEtOWY3Ni1nZGpzLWE5MmotMDI0MmJrOTQzNTYiLCJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJvcGVuLW1ldGFkYXRhLm9yZyIsInN1YiI6ImFkbWluIiwicm9sZXMiOlsiQWRtaW4iXSwiZW1haWwiOiJhZG1pbkBvcGVuLW1ldGFkYXRhLm9yZyIsImlzQm90IjpmYWxzZSwidG9rZW5UeXBlIjoiUEVSU09OQUxfQUNDRVNTIiwiaWF0IjoxNzY4NzM3ODE3LCJleHAiOjE3NzY1MTM4MTd9.Zvvzej1sq_h109AGh_-PkBxnvMGIXEGEgKdbqiEAEnmbl4aPOAfD8wwn8VL_ec9k5GIgqQFFzoM_SpNALniIE-yeh_LcspZ0Mhvjwy_C4l0fHoiGdF_fK40_Tt-gkNL3qubxy1o3PDvgTcImh6q8yH2nK-cK_BhQ6DImFLSe8tIYe3LXefboT5koAE4Za31sBb3qG7UsfeabzLyCYBRdniTLZxWKeEbhMhw_f-XUECXfghFw0IzkXMGGlx-p762NkB5_TJ_WaOIW_P5AOCQN6FLw5RYjdybSe3ufOqj9jP_5ceJvYi5Mia4XLuoq6cKGIzVztEaq-8U20I2OizBO9Q"
