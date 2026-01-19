@@ -31,3 +31,4 @@ MANIFEST
 # Environments
 .venv
 venv
+.env
